@@ -7,3 +7,4 @@
 <script setup>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 </script>
+Ich kann das alles nichtmehr.....
