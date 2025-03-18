@@ -30,7 +30,7 @@ con.connect(function(err) {
 });
 
 // Route für das Login und das Erstellen eines JWT
-app.post("/login-page", (req, res) => {
+app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   // Benutzer in der Datenbank suchen
