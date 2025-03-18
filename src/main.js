@@ -39,11 +39,13 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import i18n from './i18n.js';
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
 
 router.isReady().then(() => {
+  app.use(i18n);
   app.mount('#app');
 });

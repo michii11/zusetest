@@ -1,0 +1,70 @@
+{
+    "login":        "Login",
+    "settings":     "Settings",
+    "loginkey":     "Please Login with your data",
+    "username":     "Username",
+    "password":     "Password",
+
+
+    "languageSelection": "Select language",
+
+
+    "profile":      "Profile",
+    "notification": "Notification",
+    "language":     "Language",
+    "design":       "Design",
+    "safety":       "Safety",
+    "information":  "information",
+    "feedback":     "Help & Feedback",
+    "sure":         "Are you sure?",
+    "logout":       "Logout",
+    "cancel":       "Cancel",
+
+
+
+    "widgets_contacts_title": "Contacts", 
+    "widgets_döner_title": "Kebab opening hours",
+    "widgets_döner_closed": "Closed",
+    "widgets_mealplan_title": "Mealplan",
+    "widgets_messages_title": "Messages",
+    "widgets_classes_title": "Classes",
+    "widgets_pt_title": "Public transport",
+    "widgets_pt_text": "Click here to see the public transport schedule.",
+
+    "weekdays_1": "Monday",
+    "weekdays_2": "Tuesday",
+    "weekdays_3": "Wednesday",
+    "weekdays_4": "Thursday",
+    "weekdays_5": "Friday",
+    "weekdays_6": "Saturday",
+    "weekdays_7": "Sunday",
+
+    "menu_title": "Navigation",
+    "menu_home": "Home",    
+    "menu_settings": "Settings",
+    "menu_profile": "Profile",
+
+    "settings_profile": "Profile",
+    "settings_notifications": "Notifications",
+    "settings_language": "Language",
+    "settings_widgets": "Widgets",
+    "settings_data": "Safety and Data protection",
+    "settings_logout": "Logout",
+    "settings_info": "About this app",
+    "settings_help": "Feedback and Help",
+    "settings_logoutConfirmation": "Are you sure you want to logout?",
+
+    "settings_widgets_title": "Widgets",
+    "settings_help_title": "Help",
+    "settings_info_title": "About this app",
+
+    "settings_language_title": "Language Settings",
+    "settings_language_menuTitle": "Language",
+    "settings_language_de": "German",
+    "settings_language_en": "English",
+    "settings_language_fr": "French",
+
+    "settings_notifications_title": "Notifications",
+    "settings_profile_title": "Profile Settings",
+    "settings_data_title": "Safety and Data protection"
+}

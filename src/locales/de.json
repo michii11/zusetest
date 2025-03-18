@@ -1,0 +1,69 @@
+{
+    "login":        "Anmelden",
+    "settings":     "Einstellungen",
+    "loginkey":     "Bitte melde dich mit deinen Anmeldedaten an",
+    "username":     "Benutzername",
+    "password":     "Passwort",
+
+
+    "languageSelection": "Sprachauswahl",
+
+
+
+    "profile":      "Profil",
+    "notification": "Benachrichtigungen",
+    "language":     "Sprache",
+    "design":       "Design",
+    "safety":       "Sicherheit",
+    "information":  "App information",
+    "feedback":     "Hilfe & Feedback",
+    "sure":         "Bist du sicher?",
+    "logout":       "Abmelden",
+    "cancel":       "Abbrechen",
+
+    "widgets_contacts_title": "Kontaktdaten", 
+    "widgets_döner_title": "Döner Öffnungszeiten",
+    "widgets_döner_closed": "Geschlossen",
+    "widgets_mealplan_title": "Speisekarte Mensa",
+    "widgets_messages_title": "Nachrichten",
+    "widgets_classes_title": "Stundenplan",
+    "widgets_pt_title": "Öffentliche Verkehrsmittel",
+    "widgets_pt_text": "Hier klicken, um die Fahrzeiten anzuzeigen.",
+
+    "weekdays_1": "Montag",
+    "weekdays_2": "Dienstag",
+    "weekdays_3": "Mittwoch",
+    "weekdays_4": "Donnerstag",
+    "weekdays_5": "Freitag",
+    "weekdays_6": "Samstag",
+    "weekdays_7": "Sonntag",
+
+    "menu_title": "Navigation",
+    "menu_home": "Startseite",    
+    "menu_settings": "Einstellungen",
+    "menu_profile": "Profil",
+
+    "settings_profile": "Profil",
+    "settings_notifications": "Benachrichtigungen",
+    "settings_language": "Sprache",
+    "settings_widgets": "Widgets",
+    "settings_data": "Sicherheit und Datenschutz",
+    "settings_logout": "Abmelden",
+    "settings_info": "Über diese App",
+    "settings_help": "Feedback und Hilfe",
+    "settings_logoutConfirmation": "Sind Sie sicher, dass Sie sich abmelden wollen?",
+
+    "settings_widgets_title": "Widgets",
+    "settings_help_title": "Hilfe",
+    "settings_info_title": "Über diese App",
+
+    "settings_language_title": "Spracheinstellungen",
+    "settings_language_menuTitle": "Sprache",
+    "settings_language_de": "Deutsch",
+    "settings_language_en": "Englisch",
+    "settings_language_fr": "Französisch",
+
+    "settings_notifications_title": "Benachrichtigungen",
+    "settings_profile_title": "Profileinstellungen",
+    "settings_data_title": "Sicherheit und Datenschutz"
+}

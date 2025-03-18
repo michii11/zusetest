@@ -1,0 +1,4 @@
+{
+    "widgets": ["Doener", "Contacts", "Messages", "Mealplan", "Classes", "PT"],
+    "prefs_default_widgets": ["Doener", "Contacts", "Messages", "Mealplan"]
+}
