@@ -39,7 +39,7 @@ import '@ionic/vue/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import i18n from './i18n.js';
+import i18n from './i18ntemplate';
 
 const app = createApp(App)
   .use(IonicVue)

@@ -3,7 +3,7 @@
         <ion-col>
             <ion-card>
                 <ion-card-header>
-                    <ion-card-title>{{ l.widgets_mealplan_title }}</ion-card-title>
+                    <ion-card-title>{{ $t("widgets_mealplan_title") }}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
                     <ion-grid>
