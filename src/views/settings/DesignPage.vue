@@ -34,7 +34,7 @@ import { IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitl
 
 
     import {ref, onMounted} from 'vue';
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
+    import  configTest  from '../config/config.json';
 
     let widgets = ref([]);
 
