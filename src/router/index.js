@@ -28,7 +28,7 @@ const routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: '/home',
         name: 'Home',
         component: HomePage
       },

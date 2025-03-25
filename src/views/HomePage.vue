@@ -37,7 +37,7 @@
     import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonTitle, IonRefresher, IonRefresherContent} from '@ionic/vue';
     import { onMounted, ref} from 'vue';
 
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
+    import  configTest  from './config/config.json';
 import DoenerComp from './components/widgets/DoenerComp.vue';
 import MealplanPage from './components/widgets/MealplanPage.vue';
 import ContactPage from './components/widgets/ContactPage.vue';

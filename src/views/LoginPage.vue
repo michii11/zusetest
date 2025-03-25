@@ -39,7 +39,7 @@
 <script setup>
 import { IonPage, IonContent, IonCard, IonCardContent, IonHeader, IonToolbar, IonCardHeader, 
     IonCardTitle, IonTitle, IonInput, IonButton, IonItem } from '@ionic/vue';
-import { login } from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/settings/auth.js'; // Importiere die login Funktion
+import { login } from './settings/auth.js'; // Importiere die login Funktion
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
