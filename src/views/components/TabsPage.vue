@@ -35,3 +35,9 @@
     import { settingsOutline, mapOutline, peopleOutline, homeOutline } from 'ionicons/icons';
   </script>
   
+  <style scoped>
+  ion-tab-button.tab-selected {
+  color: #64A70B !important; /* Aktiver Tab */
+  font-weight: bold;
+}
+</style>

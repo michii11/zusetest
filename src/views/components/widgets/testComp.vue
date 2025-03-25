@@ -47,16 +47,3 @@
 <script setup>
 import { IonRow, IonCol, IonCardContent, IonCardSubtitle, IonGrid, IonCard, IonCardHeader, IonCardTitle} from '@ionic/vue';
 </script>
-
-<style scoped>
-  ion-card {
-    --background: #080808;
-    --color: #ffffff;
-    margin-top: 100px;
-  }
-
-  ion-card-title {
-    --color: #52ffe4;
-  }
-
-</style>

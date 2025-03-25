@@ -63,13 +63,7 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
 
 <style scoped>
-    ion-card {
-        --background: #080808;
-        --color: #ffffff;
-        margin-top: 100px;
-    }
-
     ion-card-title {
-        --color: #52ffe4;
+        --color: #64A70B;
     }
 </style>
