@@ -5,7 +5,7 @@
             <ion-toolbar>
                  <ion-title>Konrad-Zuse-Schule</ion-title>
                  <ion-buttons slot="start">
-                    <ion-back-button router-link="setting-page"></ion-back-button>
+                    <ion-back-button></ion-back-button>
                  </ion-buttons>
             </ion-toolbar>
         </ion-header>

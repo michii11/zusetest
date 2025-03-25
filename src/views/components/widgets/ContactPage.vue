@@ -9,7 +9,7 @@
                     <ion-grid>
                         <ion-row>
                             <ion-col>
-                                <ion-card-subtitle>{{ `${ l.weekdays_1} - ${l.weekdays_4}` }}</ion-card-subtitle>
+                                <ion-card-subtitle>{{ $t("weekdays_1") }} - {{ $t("weekdays_4") }}</ion-card-subtitle>
                                 <ion-card-subtitle>7:30 - 12:00</ion-card-subtitle>
                                 <ion-card-subtitle>13:00 - 15:00</ion-card-subtitle>
                             </ion-col>
