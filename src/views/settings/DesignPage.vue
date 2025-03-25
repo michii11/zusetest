@@ -39,7 +39,7 @@ import { IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitl
     let widgets = ref([]);
 
     onMounted(() => {
-        widgets = ref(getWidgets());
+        widgets.value = getWidgets();
         console.log(getWidgets());
     });
 

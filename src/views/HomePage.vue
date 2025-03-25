@@ -10,6 +10,15 @@
 
         <!-- Body bereich -->
         <ion-content>
+
+            <ion-refresher slot="fixed" @ionRefresh="refreshWidgets">
+                <ion-refresher-content></ion-refresher-content>
+            </ion-refresher>
+
+
+
+
+
             <ion-grid id="grid">
                 <DoenerComp v-if="widgets.includes('Doener')" />
                 <MealplanPage v-if="widgets.includes('Mealplan')"/>
@@ -25,7 +34,7 @@
 </template>
 
 <script setup>
-    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonTitle} from '@ionic/vue';
+    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonTitle, IonRefresher, IonRefresherContent} from '@ionic/vue';
     import { onMounted, ref} from 'vue';
 
     import  configTest  from './config/config.json';
@@ -56,6 +65,14 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
         return defaultWidgets;
     }
+
+    const refreshWidgets = (event) => {
+  widgets.value = getWidgets();
+  
+  setTimeout(() => {
+    event.target.complete(); // Beendet das Refreshing
+  }, 500); // Kurze Verzögerung für bessere UX
+};
 </script>
 
 
@@ -63,13 +80,7 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
 
 <style scoped>
-    ion-card {
-        --background: #080808;
-        --color: #ffffff;
-        margin-top: 100px;
-    }
-
     ion-card-title {
-        --color: #52ffe4;
+        --color: #64A70B;
     }
 </style>
