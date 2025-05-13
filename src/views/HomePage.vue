@@ -3,7 +3,7 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
+                 <img src="C:\Users\micha\OneDrive\Desktop\Schule\zusetest\zusetest\images\KZS-LOGO 1.svg" alt="test" width="128px">
             </ion-toolbar>
         </ion-header>
 
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonTitle, IonRefresher, IonRefresherContent} from '@ionic/vue';
+    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonRefresher, IonRefresherContent} from '@ionic/vue';
     import { onMounted, ref} from 'vue';
 
     import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';

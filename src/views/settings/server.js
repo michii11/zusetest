@@ -30,12 +30,13 @@ con.connect(function(err) {
 });
 
 // Route für das Login und das Erstellen eines JWT
+  // Benutzer in der Datenbank suchen
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  // Benutzer in der Datenbank suchen
-  const query = "SELECT * FROM users WHERE USERNAME = ? AND PASSWORD = ?";
-  
+  // Benutzer in der Datenbank suchen und r_id abrufen
+  const query = "SELECT ID, USERNAME, R_ID, password FROM users WHERE USERNAME = ? AND PASSWORD = ?";
+
   con.query(query, [username, password], (err, results) => {
     if (err) {
       console.error("Fehler bei der Datenbankabfrage:", err);
@@ -46,18 +47,25 @@ app.post("/login", (req, res) => {
       return res.status(401).send("Falsche Anmeldedaten");
     }
 
-    // Benutzer gefunden, JWT erstellen
-    const user = results[0]; // Der erste Benutzer aus den Ergebnissen
+    // Benutzer gefunden
+    const user = results[0];
+
+    // JWT mit r_id erstellen
     const token = jwt.sign(
-      { id: user.USER_ID, username: user.USERNAME },  // Payload
-      process.env.JWT_SECRET,  // Geheimnis aus der .env-Datei
-      { expiresIn: "1h" } // Ablaufzeit des Tokens
+      { id: user.USER_ID, username: user.USERNAME, r_id: user.R_ID },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
     );
 
-    // Token zurückgeben
-    res.json({ token });
+    // Token und r_id zurückgeben
+    res.json({ token, r_id: user.R_ID });
   });
 });
+
+
+
+
+
 
 // Authentifizierungs-Middleware für geschützte Routen
 function authenticateToken(req, res, next) {
@@ -84,4 +92,36 @@ app.get("/protected", authenticateToken, (req, res) => {
 // Server starten
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server läuft auf http://0.0.0.0:${port}`);
+});
+
+
+
+//admin menu rolle updaten
+app.post('/update-role', authenticateToken, (req, res) => {
+  const { username, new_r_id } = req.body;
+
+  console.log("📥 Anfrage zum Rollenwechsel erhalten:", username, new_r_id);
+
+  // Eingabe prüfen
+  if (!username || !new_r_id) {
+    return res.status(400).json({ success: false, message: 'Benutzername und neue Rolle sind erforderlich.' });
+  }
+
+  // SQL-Query zum Aktualisieren der Rolle
+  const query = 'UPDATE users SET r_id = ? WHERE username = ?';
+
+  con.query(query, [new_r_id, username], (err, results) => {
+    if (err) {
+      console.error("❌ Fehler beim Update der Rolle:", err);
+      return res.status(500).json({ success: false, message: 'Fehler beim Aktualisieren der Rolle.' });
+    }
+
+    // Überprüfen, ob Zeilen betroffen sind
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Benutzer nicht gefunden.' });
+    }
+
+    console.log(`✅ Rolle für Benutzer "${username}" erfolgreich aktualisiert auf r_id = ${new_r_id}`);
+    res.json({ success: true, message: 'Rolle erfolgreich geändert.' });
+  });
 });

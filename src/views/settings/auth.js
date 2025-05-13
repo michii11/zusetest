@@ -1,7 +1,5 @@
-// auth.js
 export async function login(username, password) {
   try {
-    // Sende POST-Anfrage mit den Anmeldedaten an den Server
     const response = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
@@ -10,25 +8,25 @@ export async function login(username, password) {
       body: JSON.stringify({ username, password }),
     });
 
-    // Wenn die Antwort nicht OK ist, dann fehlerhaften Server-Status ausgeben
     if (!response.ok) {
-      const errorText = await response.text(); // Text statt JSON lesen
-      console.error("Fehler beim Login:", errorText);  // Fehler aus dem Response
+      const errorText = await response.text();
+      console.error("Fehler beim Login:", errorText);
       throw new Error(errorText || "Falsche Anmeldedaten oder Serverfehler");
     }
 
     const data = await response.json();
 
-    // Überprüfen, ob das Token zurückgegeben wurde
-    if (data.token) {
-      // Speichere das JWT im Local Storage
+    // Überprüfen, ob Token und r_id existieren
+    if (data.token && data.r_id !== undefined) {
       localStorage.setItem("jwt", data.token);
+      localStorage.setItem("r_id", JSON.stringify(data.r_id)); // Speichere r_id sicher als String
+
       return { success: true, message: "Login erfolgreich!" };
     } else {
-      return { success: false, message: "Fehler beim Abrufen des Tokens" };
+      return { success: false, message: "Fehlende Daten im Server-Response" };
     }
   } catch (error) {
-    console.error("Fehler beim Login:", error.message);  // Fehler im Catch-Block
+    console.error("Fehler beim Login:", error.message);
     return { success: false, message: error.message };
   }
 }

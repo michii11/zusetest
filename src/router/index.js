@@ -12,6 +12,7 @@ import SafetyPage from '../views/settings/SafetyPage.vue';
 import TabsPage from '../views/components/TabsPage.vue';
 import CommunityHubPage from '../views/CommunityHubPage.vue';
 import SchoolMapPage from '../views/SchoolMapPage.vue';
+import AdminPage from '../views/AdminPage.vue';
 
 const routes = [
   {
@@ -83,6 +84,11 @@ const routes = [
     path: '/safety-page',
     name: 'Safety',
     component: SafetyPage
+  },
+  {
+    path:'/admin-page',
+    name:'Admin',
+    component: AdminPage
   }
 ];
 

@@ -24,18 +24,28 @@
                 
             </ion-card>
 
+            <ion-button @click="refreshWidgets">Speichern</ion-button>
 
+            <ion-toast 
+                :is-open="toastOpen" 
+                :color="toastColor"
+                :message="toastMessage" 
+                duration="2000" 
+                @didDismiss="toastOpen = false"/>
         </ion-content>
     </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitle, IonBackButton, IonButtons} from '@ionic/vue';
-
+import { IonToast ,IonButton ,IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitle, IonBackButton, IonButtons} from '@ionic/vue';
 
     import {ref, onMounted} from 'vue';
     import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
-
+    import { useRouter } from 'vue-router';
+    const toastMessage = ref('Speichern Erfolgreich!');
+    const toastOpen = ref(false);
+    const toastColor = ref('success');
+    const router = useRouter();
     let widgets = ref([]);
 
     onMounted(() => {
@@ -63,5 +73,14 @@ import { IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitl
 
         return [];
     }
+
+    const refreshWidgets = () => {
+  widgets.value = getWidgets();
+  console.log(getWidgets());
+  router.replace('/tabs/settings');
+  setTimeout(() => {
+    toastOpen.value = true;
+  }, 500); // Kurze Verzögerung für bessere UX
+};
 
 </script>

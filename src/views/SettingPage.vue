@@ -63,17 +63,20 @@
             ></ion-action-sheet>
             <ion-label>{{ $t("logout")}}</ion-label>
           </ion-item>
+          <ion-item class="adminmenu" v-if="isAdmin" :button="true" router-link="/admin-page">
+            <ion-label>Admin-Menu</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-page>
   </template>
   
   <script setup>
-  import { ref, getCurrentInstance } from 'vue';
+  import { ref, getCurrentInstance, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   import { IonPage, IonIcon, IonContent, IonList, IonItem, IonLabel, IonActionSheet, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
   
-  import { helpCircleOutline, informationCircleOutline, invertModeOutline, languageOutline, logOutOutline, notificationsOutline, personCircleOutline, shieldCheckmarkOutline } from 'ionicons/icons';
+  import { helpCircleOutline, informationCircleOutline, invertModeOutline, languageOutline, logOutOutline, notificationsOutline, personCircleOutline, shieldCheckmarkOutline} from 'ionicons/icons';
 
 
 
@@ -110,10 +113,27 @@ const t = instance.appContext.config.globalProperties.$t;
     // Weiterleitung zur Login-Seite
     router.replace("/login-page");
   };
+
+
+  const isAdmin = ref(false);
+
+onMounted(() => {
+  const r_id = localStorage.getItem("r_id"); 
+    console.log("Geladene r_id:", r_id); // Debugging
+
+    if (r_id && JSON.parse(r_id) === 1) { // Fix: JSON.parse, falls r_id als String gespeichert wurde
+        isAdmin.value = true;
+    }
+});
   </script>
   
  
  <style scoped>
+
+.adminmenu {
+  color: darkred;
+  font-weight: bold;
+}
 
   .icon-spacing {
     margin-right: 2vw;
