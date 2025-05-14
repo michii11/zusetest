@@ -35,12 +35,6 @@
                     <ion-label>Mein Auto</ion-label>
                 </ion-item>
 
-                <!-- Meine Sessions -->
-                <ion-item :button="true" router-link="/carpooling-session-page">
-                    <ion-icon :icon="personCircleOutline" class="icon-spacing"/>
-                    <ion-label>Meine Sessions</ion-label>
-                </ion-item>
-
                 <!-- Suche -->
                 <ion-item :button="true" router-link="/carpooling-search-page">
                     <ion-icon :icon="personCircleOutline" class="icon-spacing"/>
@@ -50,7 +44,7 @@
             </ion-list>
 
             <!-- Bereich für Bereits bestehende Session -->
-            <ion-card>
+            <ion-card :button="true" router-link="/carpooling-session-page">
                 <ion-card-content>
                     <ion-card-title>Aktuelle Sitzung</ion-card-title>
                     <ion-card-subtitle>Du hast keine aktuellen Mitfahrer</ion-card-subtitle>

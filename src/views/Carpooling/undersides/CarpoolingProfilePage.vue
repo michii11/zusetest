@@ -13,16 +13,19 @@
 
         <!-- Body bereich -->
         <ion-content>
-            <ion-list>
-                <ion-item :button="true">ProfilePage</ion-item>
-            </ion-list>
-
+            <ion-card>
+                <ion-card-title>Vorname, Nachname</ion-card-title>
+                <ion-card-content>
+                    
+                </ion-card-content>
+            </ion-card>
+            
         </ion-content>
     </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonContent, IonList, IonHeader, IonToolbar, IonTitle, IonItem, IonButtons, IonBackButton} from '@ionic/vue';
+import { IonPage, IonCard, IonCardTitle, IonCardContent, IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/vue';
 
 
 </script>

@@ -13,16 +13,14 @@
 
         <!-- Body bereich -->
         <ion-content>
-            <ion-list>
-                <ion-item :button="true">SearchPage</ion-item>
-            </ion-list>
+            <ion-searchbar animated="true" placeholder="Wohnort"></ion-searchbar>
 
         </ion-content>
     </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonContent, IonList, IonHeader, IonToolbar, IonTitle, IonItem, IonButtons, IonBackButton} from '@ionic/vue';
+import { IonSearchbar,IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/vue';
 
 
 </script>
