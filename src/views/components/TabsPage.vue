@@ -16,9 +16,9 @@
             <ion-label>Karte</ion-label>
           </ion-tab-button>
   
-          <ion-tab-button tab="Hub" href="/tabs/hub">
+          <ion-tab-button tab="Carpooling" href="/tabs/carpooling">
             <ion-icon :icon="peopleOutline" />
-            <ion-label>Hub</ion-label>
+            <ion-label>Carpooling</ion-label>
           </ion-tab-button>
   
           <ion-tab-button tab="Settings" href="/tabs/settings">

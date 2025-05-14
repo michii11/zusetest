@@ -13,6 +13,11 @@ import TabsPage from '../views/components/TabsPage.vue';
 import CommunityHubPage from '../views/CommunityHubPage.vue';
 import SchoolMapPage from '../views/SchoolMapPage.vue';
 import AdminPage from '../views/AdminPage.vue';
+import CarpoolingPage from '../views/Carpooling/CarpoolingPage.vue';
+import CarpoolingSearchPage from '../views/Carpooling/undersides/CarpoolingSearchPage.vue';
+import CarpoolingCarPage from '../views/Carpooling/undersides/CarpoolingCarPage.vue';
+import CarpoolingSessionPage from '../views/Carpooling/undersides/CarpoolingSessionPage.vue';
+import CarpoolingProfilePage from '../views/Carpooling/undersides/CarpoolingProfilePage.vue';
 
 const routes = [
   {
@@ -39,9 +44,9 @@ const routes = [
         component: SchoolMapPage
       },
       {
-        path: 'hub',
-        name: 'CommunityHub',
-        component: CommunityHubPage
+        path: 'carpooling',
+        name: 'Carpooling',
+        component: CarpoolingPage
       },
       {
         path: 'settings',
@@ -88,7 +93,33 @@ const routes = [
   {
     path:'/admin-page',
     name:'Admin',
-    component: AdminPage
+    component: AdminPage,
+    meta: { requiresAdmin: true }
+  },
+  {
+    path: '/hub-page',
+    name: 'CommunityHub',
+    component: CommunityHubPage
+  },
+  {
+    path: '/carpooling-search-page',
+    name: 'CarpoolingSearch',
+    component: CarpoolingSearchPage
+  },
+  {
+    path: '/carpooling-profile-page',
+    name: 'CarpoolingProfilePage',
+    component: CarpoolingProfilePage
+  },
+  {
+    path: '/carpooling-session-page',
+    name: 'CarpoolingSessionPage',
+    component: CarpoolingSessionPage
+  },
+  {
+    path: '/carpooling-car-page',
+    name: 'CarpoolingCarPage',
+    component: CarpoolingCarPage
   }
 ];
 
@@ -97,13 +128,40 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
+
+
+function isAuthenticated() {
   const token = localStorage.getItem('jwt');
-  if (to.meta.requiresAuth && !token) {
-    next('/login-page'); // Weiterleitung zur Login-Seite
-  } else {
-    next(); // Weiter zur angeforderten Route
+  if (!token) return false;
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const exp = payload.exp;
+    return exp && Date.now() < exp * 1000;
+  } catch (e) {
+    return false;
   }
+}
+
+function isAdmin() {
+  const r_id = localStorage.getItem("r_id");
+  return r_id && JSON.parse(r_id) === 1;
+}
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login-page'];
+  const authRequired = !publicPages.includes(to.path);
+
+  if (authRequired && !isAuthenticated()) {
+    return next('/login-page');
+  }
+
+  if (to.meta.requiresAdmin && !isAdmin()) {
+    return next('/tabs/settings'); // Kein Zugriff
+  }
+
+  next(); // normal weiter
 });
+
 
 export default router;
