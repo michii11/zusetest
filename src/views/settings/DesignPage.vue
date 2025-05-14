@@ -40,7 +40,7 @@
 import { IonToast ,IonButton ,IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitle, IonBackButton, IonButtons} from '@ionic/vue';
 
     import {ref, onMounted} from 'vue';
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
+    import  configTest  from '../config/config.json';
     import { useRouter } from 'vue-router';
     const toastMessage = ref('Speichern Erfolgreich!');
     const toastOpen = ref(false);

@@ -13,6 +13,7 @@ import TabsPage from '../views/components/TabsPage.vue';
 import CommunityHubPage from '../views/CommunityHubPage.vue';
 import SchoolMapPage from '../views/SchoolMapPage.vue';
 import AdminPage from '../views/AdminPage.vue';
+import HomeworkContent from '../views/components/widgets/subpages/HomeworkContent.vue';
 
 const routes = [
   {
@@ -89,6 +90,11 @@ const routes = [
     path:'/admin-page',
     name:'Admin',
     component: AdminPage
+  },
+  {
+    path: '/homeworkContent',
+    name: 'HomeworkContent',
+    component: HomeworkContent
   }
 ];
 

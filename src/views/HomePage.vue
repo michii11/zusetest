@@ -3,22 +3,13 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <img src="C:\Users\micha\OneDrive\Desktop\Schule\zusetest\zusetest\images\KZS-LOGO 1.svg" alt="test" width="128px">
+                 <ion-title>Konrad-Zuse-Schule</ion-title>
             </ion-toolbar>
         </ion-header>
 
 
         <!-- Body bereich -->
         <ion-content>
-
-            <ion-refresher slot="fixed" @ionRefresh="refreshWidgets">
-                <ion-refresher-content></ion-refresher-content>
-            </ion-refresher>
-
-
-
-
-
             <ion-grid id="grid">
                 <DoenerComp v-if="widgets.includes('Doener')" />
                 <MealplanPage v-if="widgets.includes('Mealplan')"/>
@@ -34,17 +25,17 @@
 </template>
 
 <script setup>
-    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonRefresher, IonRefresherContent} from '@ionic/vue';
+    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonTitle} from '@ionic/vue';
     import { onMounted, ref} from 'vue';
 
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
+    import  configTest  from '../views/config/config.json';
 import DoenerComp from './components/widgets/DoenerComp.vue';
-import MealplanPage from './components/widgets/MealplanPage.vue';
-import ContactPage from './components/widgets/ContactPage.vue';
-import MessagePage from './components/widgets/MessagePage.vue';
-import LessonPage from './components/widgets/LessonPage.vue';
-import PTPage from './components/widgets/PTPage.vue';
-import HomeworkPage from './components/widgets/HomeworkPage.vue';
+import MealplanPage from './components/widgets/MealplanComp.vue';
+import ContactPage from './components/widgets/ContactComp.vue';
+import MessagePage from './components/widgets/MessageComp.vue';
+import LessonPage from './components/widgets/LessonComp.vue';
+import PTPage from './components/widgets/PTComp.vue';
+import HomeworkPage from './components/widgets/HomeworkComp.vue';
 
     
 
@@ -65,14 +56,6 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
         return defaultWidgets;
     }
-
-    const refreshWidgets = (event) => {
-  widgets.value = getWidgets();
-  
-  setTimeout(() => {
-    event.target.complete(); // Beendet das Refreshing
-  }, 500); // Kurze Verzögerung für bessere UX
-};
 </script>
 
 
@@ -80,7 +63,13 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
 
 <style scoped>
+    ion-card {
+        --background: #080808;
+        --color: #ffffff;
+        margin-top: 100px;
+    }
+
     ion-card-title {
-        --color: #64A70B;
+        --color: #52ffe4;
     }
 </style>
