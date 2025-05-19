@@ -21,7 +21,8 @@
                     <ion-toggle alignment="center" :checked="widgets.includes('Classes')"  @click="toggleWidget('Classes')">Stundenplan</ion-toggle>
                     <ion-toggle alignment="center" :checked="widgets.includes('PT')"  @click="toggleWidget('PT')">Fahrzeiten</ion-toggle>
                     <ion-toggle alignment="center" :checked="widgets.includes('Homework')"  @click="toggleWidget('Homework')">Hausaufgaben</ion-toggle>
-                
+                    <ion-toggle alignment="center" :checked="widgets.includes('Grade')"  @click="toggleWidget('Grade')">Notenübersicht</ion-toggle>
+
             </ion-card>
 
             <ion-button @click="refreshWidgets">Speichern</ion-button>

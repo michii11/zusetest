@@ -158,6 +158,17 @@ watch(subjects, (val) => {
 }, { deep: true })
 
 
+import { useWidgets } from '../../../utils/widgetReload'
+
+const { getWidgets, saveWidgets } = useWidgets()
+
+// Beispiel: Widget hinzufügen und speichern
+const widgets = ref(getWidgets())
+
+function addWidget(newWidget) {
+  widgets.value.push(newWidget)
+  saveWidgets(widgets.value)
+}
 </script>
 
 <style scoped>

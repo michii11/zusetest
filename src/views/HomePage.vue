@@ -18,6 +18,7 @@
                 <LessonPage v-if="widgets.includes('Classes')"/>
                 <PTPage v-if="widgets.includes('PT')"/>
                 <HomeworkPage v-if="widgets.includes('Homework')"/>
+                <GradeComp v-if="widgets.includes('Grade')"/>
                 
             </ion-grid>
         </ion-content>
@@ -36,6 +37,8 @@ import MessagePage from './components/widgets/MessageComp.vue';
 import LessonPage from './components/widgets/LessonComp.vue';
 import PTPage from './components/widgets/PTComp.vue';
 import HomeworkPage from './components/widgets/HomeworkComp.vue';
+import GradeComp from './components/widgets/GradeComp.vue';
+
 
     
 

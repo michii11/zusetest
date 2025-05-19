@@ -14,6 +14,7 @@ import CommunityHubPage from '../views/CommunityHubPage.vue';
 import SchoolMapPage from '../views/SchoolMapPage.vue';
 import AdminPage from '../views/AdminPage.vue';
 import HomeworkContent from '../views/components/widgets/subpages/HomeworkContent.vue';
+import GradeContent from '../views/components/widgets/subpages/GradeContent.vue';
 
 const routes = [
   {
@@ -95,6 +96,11 @@ const routes = [
     path: '/homeworkContent',
     name: 'HomeworkContent',
     component: HomeworkContent
+  },
+  {
+    path: '/gradeContent',
+    name: 'GradeContent',
+    component:GradeContent
   }
 ];
 
