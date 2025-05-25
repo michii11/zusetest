@@ -40,12 +40,65 @@
                 :message="toastMessage" 
                 duration="2000" 
                 @didDismiss="toastOpen = false"/>
+
+
+
+
+
+                <ion-button @click="showCreateUserModal = true">Neuen Benutzer erstellen</ion-button>
+
+                <!-- Modal für User erstellung -->
+
+                <ion-modal :is-open="showCreateUserModal" @didDismiss="closeModal">
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-title>Neuen Benutzer erstellen</ion-title>
+                      <ion-buttons slot="end">
+                        <ion-button @click="closeModal">Schließen</ion-button>
+                      </ion-buttons>
+                    </ion-toolbar>
+                  </ion-header>
+
+                  <ion-content class="ion-padding">
+                    <ion-item>
+                      <ion-label position="floating">Benutzername</ion-label>
+                      <ion-input v-model="form.username" />
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Passwort</ion-label>
+                      <ion-input v-model="form.password" type="password" />
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Vorname</ion-label>
+                      <ion-input v-model="form.firstname" />
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="floating">Nachname</ion-label>
+                      <ion-input v-model="form.lastname" />
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label>Rolle auswählen</ion-label>
+                      <ion-select v-model="form.r_id">
+                        <ion-select-option value="1">Admin</ion-select-option>
+                        <ion-select-option value="2">Teacher</ion-select-option>
+                        <ion-select-option value="3">Student</ion-select-option>
+                        <ion-select-option value="4">Guest</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                    <ion-button expand="block" @click="createUser">Benutzer erstellen</ion-button>
+                  </ion-content>
+                </ion-modal>
         </ion-content>
     </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonSelectOption, IonSelect, IonItem, IonLabel, IonToast, IonInput,
+import { IonModal,IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonSelectOption, IonSelect, IonItem, IonLabel, IonToast, IonInput,
     IonButton, IonTitle, IonBackButton, IonButtons} from '@ionic/vue';
     import { ref } from 'vue';
 
@@ -104,6 +157,42 @@ const updateRId = async () => {
     toastMessage.value = '🚫 Serverfehler beim Senden der Anfrage.';
   }
 };
+
+const showCreateUserModal = ref(false)
+const form = ref({
+  username: '',
+  password: '',
+  firstname: '',
+  lastname: '',
+  r_id: ''
+})
+
+function closeModal() {
+  showCreateUserModal.value = false
+}
+
+async function createUser() {
+  try {
+    const res = await fetch('http://localhost:3000/create-user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form.value)
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      closeModal();
+    } else {
+      alert('Fehler: ' + data.message);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 
 
 </script>

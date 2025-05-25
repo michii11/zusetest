@@ -3,7 +3,7 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <img src="C:\Users\micha\OneDrive\Desktop\Schule\zusetest\zusetest\images\KZS-LOGO 1.svg" alt="test" width="128px" style="padding: 5px;">
+                 <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" width="128px" style="padding: 5px;">
             </ion-toolbar>
         </ion-header>
 

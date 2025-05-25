@@ -20,10 +20,10 @@
             <!-- New Card -->
             <ion-card>
                 <ion-item>
-                    <ion-input v-model="username" class="pw" :label="$t('username')"></ion-input>
+                    <ion-input v-model="username" class="pw" :placeholder="$t('username')"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input v-model="password" class="pw" :label="$t('password')" type="password"></ion-input>
+                    <ion-input v-model="password" class="pw" :placeholder="$t('password')" type="password"></ion-input>
                 </ion-item>
             </ion-card>
 
@@ -57,7 +57,9 @@ const handleLogin = async () => {
 
     if (response.success) {
         // Bei Erfolg, Weiterleitung zur "Setting Page"
+            localStorage.setItem("token", response.token);
         console.log("✅ Login erfolgreich!");
+        console.log(localStorage.getItem("token"));
         router.replace("/tabs/home");
     } else {
         // Fehlernachricht anzeigen

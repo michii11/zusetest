@@ -23,6 +23,7 @@
     "@capacitor/status-bar": "6.0.2",
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
+    "bcrypt": "^6.0.0",
     "bootstrap": "^5.3.3",
     "cordova-plugin-camera": "^8.0.0",
     "cors": "^2.8.5",
@@ -30,7 +31,10 @@
     "express": "^4.21.2",
     "ionicons": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "mysql": "^2.18.1",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "vue": "^3.3.0",
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.2.0"

@@ -16,12 +16,18 @@ export async function login(username, password) {
 
     const data = await response.json();
 
-    // Überprüfen, ob Token und r_id existieren
     if (data.token && data.r_id !== undefined) {
+      // Optional speichern – du kannst das auch später tun
       localStorage.setItem("jwt", data.token);
-      localStorage.setItem("r_id", JSON.stringify(data.r_id)); // Speichere r_id sicher als String
+      localStorage.setItem("r_id", JSON.stringify(data.r_id));
 
-      return { success: true, message: "Login erfolgreich!" };
+      // ✅ GIB DEN TOKEN HIER ZURÜCK!
+      return {
+        success: true,
+        token: data.token,
+        r_id: data.r_id,
+        message: "Login erfolgreich!",
+      };
     } else {
       return { success: false, message: "Fehlende Daten im Server-Response" };
     }

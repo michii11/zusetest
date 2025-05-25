@@ -18,6 +18,8 @@ import CarpoolingSearchPage from '../views/Carpooling/undersides/CarpoolingSearc
 import CarpoolingCarPage from '../views/Carpooling/undersides/CarpoolingCarPage.vue';
 import CarpoolingSessionPage from '../views/Carpooling/undersides/CarpoolingSessionPage.vue';
 import CarpoolingProfilePage from '../views/Carpooling/undersides/CarpoolingProfilePage.vue';
+import ChatPage from '../views/Carpooling/undersides/Chat/ChatPage.vue';
+import CarpoolingSupportReport from '../views/Carpooling/undersides/CarpoolingSupportReport.vue';
 
 const routes = [
   {
@@ -120,6 +122,16 @@ const routes = [
     path: '/carpooling-car-page',
     name: 'CarpoolingCarPage',
     component: CarpoolingCarPage
+  },
+  {
+    path: '/carpooling-chat',
+    name: 'CarpoolingChat',
+    component: ChatPage
+  },
+  {
+    path: '/carpooling-support-report',
+    name: 'CarpoolingSupportReport',
+    component: CarpoolingSupportReport
   }
 ];
 
