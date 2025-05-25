@@ -66,5 +66,17 @@
 
     "settings_notifications_title": "Notifications",
     "settings_profile_title": "Profile Settings",
-    "settings_data_title": "Safety and Data protection"
+    "settings_data_title": "Safety and Data protection",
+
+
+    "grades_title_view": "📊 Grade overview",
+    "grades_new_subject_placeholder": "Add class",
+    "grades_new_grade_placeholder": "New grade",
+    "grades_button_add": "Add",
+    "grades_button_save": "Save",
+    "grades_button_remove_subject": "Delete class",
+    "grades_button_remove_grade": "✖",
+    "grades_label_grade": "Grade",
+    "grades_label_average": "Average",
+    "grades_label_overall_average": "Overall"
 }

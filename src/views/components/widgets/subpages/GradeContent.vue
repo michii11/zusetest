@@ -1,142 +1,77 @@
-  <!--
- <template>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Notenübersicht</ion-card-title>
-        <ion-card-subtitle>Halbjahr 1</ion-card-subtitle>
-      </ion-card-header>
-  
-      <ion-card-content>
-        <ion-list>
-          <ion-item v-for="subject in subjects" :key="subject.name">
-            <ion-label>
-              <h2>{{ subject.name }}</h2>
-              <p>Noten: {{ subject.grades.join(', ') }}</p>
-            </ion-label>
-            <ion-badge color="primary" slot="end">
-              Ø {{ calculateAverage(subject.grades).toFixed(1) }}
-            </ion-badge>
-          </ion-item>
-        </ion-list>
-  
-        <ion-item lines="full">
-          <ion-label><strong>Gesamtdurchschnitt</strong></ion-label>
-          <ion-badge color="success" slot="end">
-            {{ overallAverage.toFixed(2) }}
-          </ion-badge>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-  </template>
-  
-  <script setup>
-  import {
-    IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
-    IonCardContent, IonList, IonItem, IonLabel, IonBadge
-  } from '@ionic/vue'
-  import { ref, computed } from 'vue'
-  
-  // Beispiel-Daten: Kann später aus API oder Store kommen
-  const subjects = ref([
-    { name: 'Mathematik', grades: [2, 3, 2] },
-    { name: 'Deutsch', grades: [1, 2, 2] },
-    { name: 'Englisch', grades: [3, 2, 4] },
-    { name: 'Biologie', grades: [1, 1] }
-  ])
-  
-  function calculateAverage(grades) {
-    const total = grades.reduce((a, b) => a + b, 0)
-    return grades.length ? total / grades.length : 0
-  }
-  
-  const overallAverage = computed(() => {
-    const allGrades = subjects.value.flatMap(s => s.grades)
-    return calculateAverage(allGrades)
-  })
-  </script>
-  
-  <style scoped>
-  ion-badge {
-    font-size: 1rem;
-  }
-  </style> 
-  -->
-  
 
   <template>
-    <ion-page>
-      <ion-header>
-        <ion-toolbar>
+  <ion-page>
+    <ion-header>
+       <ion-toolbar>
           <ion-title>Konrad-Zuse-Schule</ion-title>
           <ion-buttons slot="start">
             <ion-back-button router-link="/tabs/home"></ion-back-button>
           </ion-buttons>
         </ion-toolbar>
-  
-        <ion-toolbar color="primary">
-          <ion-title>📊 Notenübersicht</ion-title>
-        </ion-toolbar>
-      </ion-header>
-  
-      <ion-content class="ion-padding">
-  
-        <!-- Neues Fach -->
+
+      <ion-toolbar color="primary">
+        <ion-title>{{ $t('grades_title_view') }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <!-- Neues Fach -->
+      <ion-item>
+        <ion-input v-model="newSubject" :placeholder="$t('grades_new_subject_placeholder')"></ion-input>
+        <ion-button @click="addSubject" color="success">{{ $t('grades_button_add') }}</ion-button>
+      </ion-item>
+
+      <!-- Fachliste -->
+      <ion-card v-for="(subject, index) in subjects" :key="index">
+        <ion-card-header>
+          <ion-card-title class="ion-text-capitalize">
+            {{ subject.name }}
+          </ion-card-title>
+          <ion-button fill="clear" color="danger" size="small" @click="removeSubject(index)">
+            {{ $t('grades_button_remove_subject') }}
+          </ion-button>
+        </ion-card-header>
+
+        <!-- Neue Note -->
         <ion-item>
-          <ion-input v-model="newSubject" placeholder="Neues Fach hinzufügen"></ion-input>
-          <ion-button @click="addSubject" color="success">Hinzufügen</ion-button>
+          <ion-input
+            v-model.number="subject.newGrade"
+            type="number"
+            :placeholder="$t('grades_new_grade_placeholder')"
+          ></ion-input>
+          <ion-button @click="addGrade(index)" color="medium">{{ $t('grades_button_save') }}</ion-button>
         </ion-item>
-  
-        <!-- Fachliste -->
-        <ion-card v-for="(subject, index) in subjects" :key="index">
-          <ion-card-header>
-            <ion-card-title class="ion-text-capitalize">
-              {{ subject.name }}
-            </ion-card-title>
-            <ion-button fill="clear" color="danger" size="small" @click="removeSubject(index)">
-              Fach entfernen
+
+        <!-- Notenliste -->
+        <ion-list>
+          <ion-item v-for="(grade, gIndex) in subject.grades" :key="gIndex">
+            <ion-label>{{ $t('grades_label_grade') }}: {{ grade }}</ion-label>
+            <ion-button fill="clear" color="danger" size="small" @click="removeGrade(index, gIndex)">
+              {{ $t('grades_button_remove_grade') }}
             </ion-button>
-          </ion-card-header>
-  
-          <!-- Neue Note -->
-          <ion-item>
-            <ion-input
-              v-model.number="subject.newGrade"
-              type="number"
-              placeholder="Neue Note (z.B. 2)"
-            ></ion-input>
-            <ion-button @click="addGrade(index)" color="medium">Speichern</ion-button>
           </ion-item>
-  
-          <!-- Notenliste -->
-          <ion-list>
-            <ion-item v-for="(grade, gIndex) in subject.grades" :key="gIndex">
-              <ion-label>Note: {{ grade }}</ion-label>
-              <ion-button fill="clear" color="danger" size="small" @click="removeGrade(index, gIndex)">
-                ✖
-              </ion-button>
-            </ion-item>
-          </ion-list>
-  
-          <!-- Durchschnitt -->
-          <ion-item lines="full">
-            <ion-label><strong>Durchschnitt:</strong></ion-label>
-            <ion-badge color="primary" slot="end">
-              {{ calculateAverage(subject.grades).toFixed(2) }}
-            </ion-badge>
-          </ion-item>
-        </ion-card>
-  
-        <!-- Gesamtdurchschnitt -->
-        <ion-item lines="full" v-if="subjects.length">
-          <ion-label><strong>Gesamtdurchschnitt</strong></ion-label>
-          <ion-badge color="success" slot="end">
-            {{ overallAverage.toFixed(2) }}
+        </ion-list>
+
+        <!-- Durchschnitt -->
+        <ion-item lines="full">
+          <ion-label><strong>{{ $t('grades_label_average') }}:</strong></ion-label>
+          <ion-badge color="primary" slot="end">
+            {{ calculateAverage(subject.grades).toFixed(2) }}
           </ion-badge>
         </ion-item>
-  
-      </ion-content>
-    </ion-page>
-  </template>
+      </ion-card>
+
+      <!-- Gesamtdurchschnitt -->
+      <ion-item lines="full" v-if="subjects.length">
+        <ion-label><strong>{{ $t('grades_label_overall_average') }}</strong></ion-label>
+        <ion-badge color="success" slot="end">
+          {{ overallAverage.toFixed(2) }}
+        </ion-badge>
+      </ion-item>
+    </ion-content>
+  </ion-page>
+</template>
+
   
   <script setup>
   import {
