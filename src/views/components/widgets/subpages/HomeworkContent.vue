@@ -1,33 +1,31 @@
 <template>
   <ion-page>
     <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-    <ion-header>
-        <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
-                 <ion-buttons slot="start">
-                    <ion-back-button router-link="/tabs/home"></ion-back-button>
-                 </ion-buttons>
-            </ion-toolbar>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
 
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Konrad-Zuse-Schule</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button router-link="/tabs/home"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
 
       <ion-toolbar color="primary">
-        <ion-title>📘 Hausaufgaben-Manager</ion-title>
+        <ion-title>{{ $t('homework_title') }}</ion-title>
       </ion-toolbar>
     </ion-header>
 
-
     <ion-content class="ion-padding">
-
       <!-- Neues Fach hinzufügen -->
       <ion-item>
         <ion-input
           v-model="newSubject"
-          placeholder="Neues Fach hinzufügen"
+          :placeholder="$t('homework_newSubject')"
         ></ion-input>
         <ion-button @click="addSubject" color="success">
-          Hinzufügen
+          {{ $t('homework_add') }}
         </ion-button>
       </ion-item>
 
@@ -38,7 +36,7 @@
             {{ subject.name }}
           </ion-card-title>
           <ion-button fill="clear" color="danger" size="small" @click="removeSubject(index)">
-            Fach entfernen
+            {{ $t('homework_removeSubject') }}
           </ion-button>
         </ion-card-header>
 
@@ -46,10 +44,10 @@
         <ion-item>
           <ion-input
             v-model="subject.newHomework"
-            placeholder="Neue Hausaufgabe"
+            :placeholder="$t('homework_newHomework')"
           ></ion-input>
           <ion-button @click="addHomework(index)" color="medium">
-            Speichern
+            {{ $t('homework_save') }}
           </ion-button>
         </ion-item>
 
@@ -74,6 +72,7 @@
     </ion-content>
   </ion-page>
 </template>
+
 
 <script setup>
 import {
@@ -157,18 +156,6 @@ watch(subjects, (val) => {
   localStorage.setItem('homeworkData', JSON.stringify(val))
 }, { deep: true })
 
-
-import { useWidgets } from '../../../utils/widgetReload'
-
-const { getWidgets, saveWidgets } = useWidgets()
-
-// Beispiel: Widget hinzufügen und speichern
-const widgets = ref(getWidgets())
-
-function addWidget(newWidget) {
-  widgets.value.push(newWidget)
-  saveWidgets(widgets.value)
-}
 </script>
 
 <style scoped>

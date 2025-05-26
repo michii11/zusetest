@@ -73,5 +73,40 @@
   "grades_button_remove_grade": "✖",
   "grades_label_grade": "Note",
   "grades_label_average": "Durchschnitt",
-  "grades_label_overall_average": "Gesamtdurchschnitt"
+  "grades_label_overall_average": "Gesamtdurchschnitt",
+
+  "widgets_classes_nextClass": "Nächste Stunde:",
+
+
+  "homework_title": "📘 Hausaufgaben-Manager",
+  "homework_newSubject": "Neues Fach hinzufügen",
+  "homework_add": "Hinzufügen",
+  "homework_removeSubject": "Fach entfernen",
+  "homework_newHomework": "Neue Hausaufgabe",
+  "homework_save": "Speichern",
+
+  "messages_title": "Nachrichten",
+  "messages_empty": "Keine neuen Nachrichten.",
+
+  "grade_overview": "Notenübersicht",
+
+  "homework": "Hausaufgaben",
+
+
+  "mealplan_fries": "Pommes frites Tüte",
+  "mealplan_fries_price": "1,70€",
+  "mealplan_soup": "Champignon-Cremesuppe",
+  "mealplan_soup_price": "0,36€ je 100g",
+  "mealplan_pasta": "Weizen Nudeln",
+  "mealplan_pasta_price": "2,60€",
+  "mealplan_salad": "Gemischter Blattsalat",
+  "mealplan_salad_price": "0,80€",
+  "mealplan_dinner": "Abendmensa",
+  "mealplan_dinner_time": "17:00 - 21:00",
+  "mealplan_pizza": "Pizza verschiedener Art",
+  "mealplan_pizza_price": "3,60€ - 5,90€",
+  "mealplan_lasagna": "Lasagne Bolognese",
+  "mealplan_lasagna_price": "3,60€",
+  "mealplan_more": "..."
+
 }

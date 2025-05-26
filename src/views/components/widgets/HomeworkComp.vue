@@ -3,7 +3,7 @@
     <ion-col>
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Hausaufgaben</ion-card-title>
+          <ion-card-title>{{ $t("homework")}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>

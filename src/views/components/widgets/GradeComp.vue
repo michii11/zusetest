@@ -3,7 +3,7 @@
     <ion-col>
       <ion-card @click="goToGrades" class="hover-pointer">
         <ion-card-header>
-          <ion-card-title>Notenübersicht</ion-card-title>
+          <ion-card-title>{{ $t("grade_overview")}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>

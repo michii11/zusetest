@@ -78,5 +78,40 @@
     "grades_button_remove_grade": "✖",
     "grades_label_grade": "Grade",
     "grades_label_average": "Average",
-    "grades_label_overall_average": "Overall"
+    "grades_label_overall_average": "Overall",
+
+
+    "widgets_classes_nextClass": "Next class:",
+
+    "homework_title": "📘 Homework Manager",
+    "homework_newSubject": "Add new subject",
+    "homework_add": "Add",
+    "homework_removeSubject": "Remove subject",
+    "homework_newHomework": "New homework",
+    "homework_save": "Save",
+
+
+    "messages_title": "Messages",
+    "messages_empty": "No new messages.",
+
+    "grade_overview": "Grade overview",
+
+    "homework": "Homework",
+
+
+    "mealplan_fries": "French Fries Bag",
+    "mealplan_fries_price": "€1.70",
+    "mealplan_soup": "Mushroom Cream Soup",
+    "mealplan_soup_price": "€0.36 per 100g",
+    "mealplan_pasta": "Wheat Noodles",
+    "mealplan_pasta_price": "€2.60",
+    "mealplan_salad": "Mixed Leaf Salad",
+    "mealplan_salad_price": "€0.80",
+    "mealplan_dinner": "Evening Canteen",
+    "mealplan_dinner_time": "5:00 PM - 9:00 PM",
+    "mealplan_pizza": "Pizza (various types)",
+    "mealplan_pizza_price": "€3.60 - €5.90",
+    "mealplan_lasagna": "Lasagna Bolognese",
+    "mealplan_lasagna_price": "€3.60",
+    "mealplan_more": "..."
 }

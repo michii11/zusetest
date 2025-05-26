@@ -6,7 +6,7 @@
                     <ion-card-title>{{ $t("widgets_classes_title") }}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                    Nächste Stunde:
+                    {{ $t("widgets_classes_nextClass") }}
                 </ion-card-content>
             </ion-card>
         </ion-col>
