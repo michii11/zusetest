@@ -3,7 +3,9 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
+<div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>
                  <ion-buttons slot="start">
                     <ion-back-button></ion-back-button>
                  </ion-buttons>
@@ -36,7 +38,7 @@
 </template>
 
 <script setup>
-import { IonSelect, IonSelectOption,IonCard, IonInput , IonCardContent, IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/vue';
+import { IonSelect, IonSelectOption,IonCard, IonInput , IonCardContent, IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton} from '@ionic/vue';
 import {ref} from 'vue';
 
 

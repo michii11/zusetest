@@ -3,8 +3,10 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
-                 <ion-buttons slot="start">
+                  <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+                  </div>                 
+                  <ion-buttons slot="start">
                     <ion-back-button router-link="setting-page"></ion-back-button>
                  </ion-buttons>
             </ion-toolbar>
@@ -38,7 +40,7 @@
 <script setup>
 import {ref} from 'vue';
 import { IonPage, IonLabel, IonSelect, IonSelectOption, IonContent, IonCard, IonHeader, IonToolbar, IonCardHeader, 
-    IonCardTitle, IonTitle, IonBackButton, IonButtons, IonList, IonItem} from '@ionic/vue';
+    IonCardTitle, IonBackButton, IonButtons, IonList, IonItem} from '@ionic/vue';
     import { useI18n } from 'vue-i18n';
 
 const { locale } = useI18n();

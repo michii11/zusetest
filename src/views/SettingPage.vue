@@ -3,8 +3,9 @@
       <!-- Kopfleiste -->
       <ion-header>
         <ion-toolbar>
-          <ion-title>Konrad-Zuse-Schule</ion-title>
-        </ion-toolbar>
+                  <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+                  </div>         </ion-toolbar>
       </ion-header>
   
       <!-- Body Bereich -->
@@ -74,7 +75,7 @@
   <script setup>
   import { ref, getCurrentInstance, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
-  import { IonPage, IonIcon, IonContent, IonList, IonItem, IonLabel, IonActionSheet, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
+  import { IonPage, IonIcon, IonContent, IonList, IonItem, IonLabel, IonActionSheet, IonHeader, IonToolbar } from '@ionic/vue';
   
   import { helpCircleOutline, informationCircleOutline, invertModeOutline, languageOutline, logOutOutline, notificationsOutline, personCircleOutline, shieldCheckmarkOutline} from 'ionicons/icons';
 

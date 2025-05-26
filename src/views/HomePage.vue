@@ -3,21 +3,17 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" width="128px" style="padding: 5px;">
-            </ion-toolbar>
+                                  <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+                  </div>          </ion-toolbar>
         </ion-header>
 
 
         <!-- Body bereich -->
         <ion-content>
-
             <ion-refresher slot="fixed" @ionRefresh="refreshWidgets">
                 <ion-refresher-content></ion-refresher-content>
             </ion-refresher>
-
-
-
-
 
             <ion-grid id="grid">
                 <DoenerComp v-if="widgets.includes('Doener')" />
@@ -27,6 +23,7 @@
                 <LessonPage v-if="widgets.includes('Classes')"/>
                 <PTPage v-if="widgets.includes('PT')"/>
                 <HomeworkPage v-if="widgets.includes('Homework')"/>
+                <GradeComp v-if="widgets.includes('Grade')"/>
                 
             </ion-grid>
         </ion-content>
@@ -34,21 +31,23 @@
 </template>
 
 <script setup>
-    import { IonGrid,IonPage,IonContent, IonHeader, IonToolbar, IonRefresher, IonRefresherContent} from '@ionic/vue';
+    import { IonRefresher,IonRefresherContent,IonGrid,IonPage,IonContent, IonHeader, IonToolbar} from '@ionic/vue';
     import { onMounted, ref} from 'vue';
 
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
+    import  configTest  from '../views/config/config.json';
 import DoenerComp from './components/widgets/DoenerComp.vue';
-import MealplanPage from './components/widgets/MealplanPage.vue';
-import ContactPage from './components/widgets/ContactPage.vue';
-import MessagePage from './components/widgets/MessagePage.vue';
-import LessonPage from './components/widgets/LessonPage.vue';
-import PTPage from './components/widgets/PTPage.vue';
-import HomeworkPage from './components/widgets/HomeworkPage.vue';
-
+import MealplanPage from './components/widgets/MealplanComp.vue';
+import ContactPage from './components/widgets/ContactComp.vue';
+import MessagePage from './components/widgets/MessageComp.vue';
+import LessonPage from './components/widgets/LessonComp.vue';
+import PTPage from './components/widgets/PTComp.vue';
+import HomeworkPage from './components/widgets/HomeworkComp.vue';
+import GradeComp from './components/widgets/GradeComp.vue';
     
 
     let widgets = ref([]);
+
+
 
     onMounted(() => {
         widgets = ref(getWidgets());
@@ -66,7 +65,9 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
         return defaultWidgets;
     }
 
-    const refreshWidgets = (event) => {
+
+
+      const refreshWidgets = (event) => {
   widgets.value = getWidgets();
   
   setTimeout(() => {
@@ -80,7 +81,13 @@ import HomeworkPage from './components/widgets/HomeworkPage.vue';
 
 
 <style scoped>
+    ion-card {
+        --background: #080808;
+        --color: #ffffff;
+        margin-top: 100px;
+    }
+
     ion-card-title {
-        --color: #64A70B;
+        --color: #52ffe4;
     }
 </style>

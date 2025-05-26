@@ -11,7 +11,7 @@ import HelpPage from '../views/settings/HelpPage.vue';
 import SafetyPage from '../views/settings/SafetyPage.vue';
 import TabsPage from '../views/components/TabsPage.vue';
 import CommunityHubPage from '../views/CommunityHubPage.vue';
-import SchoolMapPage from '../views/SchoolMapPage.vue';
+import SchoolMapPage from '../views/MapPage.vue';
 import AdminPage from '../views/AdminPage.vue';
 import CarpoolingPage from '../views/Carpooling/CarpoolingPage.vue';
 import CarpoolingSearchPage from '../views/Carpooling/undersides/CarpoolingSearchPage.vue';
@@ -20,6 +20,8 @@ import CarpoolingSessionPage from '../views/Carpooling/undersides/CarpoolingSess
 import CarpoolingProfilePage from '../views/Carpooling/undersides/CarpoolingProfilePage.vue';
 import ChatPage from '../views/Carpooling/undersides/Chat/ChatPage.vue';
 import CarpoolingSupportReport from '../views/Carpooling/undersides/CarpoolingSupportReport.vue';
+import HomeworkContent from '../views/components/widgets/subpages/HomeworkContent.vue'
+import GradeContent from '../views/components/widgets/subpages/GradeContent.vue';
 
 const routes = [
   {
@@ -132,6 +134,16 @@ const routes = [
     path: '/carpooling-support-report',
     name: 'CarpoolingSupportReport',
     component: CarpoolingSupportReport
+  },
+  {
+    path: '/homeworkpage',
+    name: 'HomeworkPage',
+    component: HomeworkContent
+  },
+  {
+    path: '/gradecontent',
+    name: 'GradeContent',
+    component: GradeContent
   }
 ];
 

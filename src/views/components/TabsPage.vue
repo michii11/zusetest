@@ -8,22 +8,22 @@
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/tabs/home">
             <ion-icon :icon="homeOutline" />
-            <ion-label>Home</ion-label>
+            <ion-label>{{$t('tabs_home')}}</ion-label>
           </ion-tab-button>
   
           <ion-tab-button tab="SchoolMap" href="/tabs/school-map">
             <ion-icon :icon="mapOutline" />
-            <ion-label>Karte</ion-label>
+            <ion-label>{{$t('tabs_map')}}</ion-label>
           </ion-tab-button>
   
           <ion-tab-button tab="Carpooling" href="/tabs/carpooling">
             <ion-icon :icon="peopleOutline" />
-            <ion-label>Carpooling</ion-label>
+            <ion-label>{{$t('tabs_carpooling')}}</ion-label>
           </ion-tab-button>
   
           <ion-tab-button tab="Settings" href="/tabs/settings">
             <ion-icon :icon="settingsOutline" />
-            <ion-label>Einstellungen</ion-label>
+            <ion-label>{{$t('tabs_settings')}}</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>

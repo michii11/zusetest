@@ -5,7 +5,9 @@
         <IonButtons slot="start">
           <IonBackButton defaultHref="/" />
         </IonButtons>
-        <IonTitle>Chat</IonTitle>
+                  <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>
       </IonToolbar>
     </IonHeader>
 
@@ -42,7 +44,7 @@
 
 <script setup>
 import {
-  IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton,
+  IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton,
   IonContent, IonFooter, IonButton, IonInput
 } from '@ionic/vue';
 import { ref, onMounted, nextTick } from 'vue';

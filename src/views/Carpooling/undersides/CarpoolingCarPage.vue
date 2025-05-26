@@ -3,7 +3,9 @@
     <!-- Kopfleiste -->
     <ion-header>
       <ion-toolbar>
-        <ion-title>Konrad-Zuse-Schule</ion-title>
+          <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>
         <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -25,12 +27,11 @@
       <div v-else-if="showRegistrationCard === true">
         <!-- Registrierungskarte -->
         <ion-card>
-          <ion-card-title>Noch nicht Registriert</ion-card-title>
+          <ion-card-title>{{ $t('ccr_not_registered') }}</ion-card-title>
           <ion-card-content>
-            Stimme den Bedingungen zu, sodass dich dein Lehrer im nächsten Schritt freigeben kann.
-            Dazu benötigst du einen gültigen Führerschein, den du bei deinem Lehrer vorzeigst.
+            {{ $t('ccr_please_agree') }}
           </ion-card-content>
-          <ion-button @click="showModal = true">Registrieren</ion-button>
+          <ion-button @click="showModal = true">{{ $t('ccr_register') }}</ion-button>
         </ion-card>
       </div>
 
@@ -43,10 +44,10 @@
         <!-- Fahrzeugdatenkarte -->
         <ion-card>
           <ion-card-content>
-          <ion-card-title>Fahrzeugdaten
-          <ion-button class="button" @click="openEditModal">Bearbeiten</ion-button></ion-card-title>
+          <ion-card-title>{{$t('ccr_vehicle_data')}}
+          <ion-button class="button" @click="openEditModal">{{$t('ccr_edit')}}</ion-button></ion-card-title>
           <br>
-          <ion-card-title>Sichtbarkeit
+          <ion-card-title>{{$t('ccr_visibility')}}
             <ion-toggle
             v-model="visible"
             @ionChange="toggleVisibility"
@@ -61,32 +62,32 @@
         <ion-modal :is-open="isEditModalOpen">
           <ion-content>
             <ion-card>
-              <ion-card-title>Fahrzeugdaten</ion-card-title>
+              <ion-card-title>{{$t('ccr_vehicle_data')}}</ion-card-title>
               <ion-input v-model="editSeats" type="number" placeholder="Sitzplätze ohne Fahrer"></ion-input>
               <ion-select v-model="editFuelId" placeholder="Bitte Antrieb auswählen">
-                <ion-select-option value="1">Diesel</ion-select-option>
-                <ion-select-option value="2">Benzin</ion-select-option>
-                <ion-select-option value="3">Elektrisch</ion-select-option>
-                <ion-select-option value="4">Gas</ion-select-option>
-                <ion-select-option value="5">Hybrid</ion-select-option>
-                <ion-select-option value="6">Plug-in-Hybrid</ion-select-option>
+                <ion-select-option value="1">{{$t('ccr_diesel')}}</ion-select-option>
+                <ion-select-option value="2">{{$t('ccr_gasoline')}}</ion-select-option>
+                <ion-select-option value="3">{{$t('ccr_electric')}}</ion-select-option>
+                <ion-select-option value="4">{{$t('ccr_gas')}}</ion-select-option>
+                <ion-select-option value="5">{{$t('ccr_hybrid')}}</ion-select-option>
+                <ion-select-option value="6">{{$t('ccr_plug_in_hybrid')}}</ion-select-option>
               </ion-select>
             </ion-card>
 
             <ion-card>
-              <ion-card-title>Routendaten</ion-card-title>
+              <ion-card-title>{{$t('ccr_route_data')}}</ion-card-title>
               <ion-input v-model="editLocation" placeholder="Zielort"></ion-input>
               <ion-input v-model="editPostalCode" type="number" placeholder="PLZ"></ion-input>
             </ion-card>
 
-            <ion-button expand="block" color="success" @click="saveEditChanges">Speichern</ion-button>
-            <ion-button expand="block" color="medium" @click="cancelEditModal">Abbrechen</ion-button>
+            <ion-button expand="block" color="success" @click="saveEditChanges">{{$t('grades_button_save')}}</ion-button>
+            <ion-button expand="block" color="medium" @click="cancelEditModal">{{$t('cancel')}}</ion-button>
           </ion-content> 
         </ion-modal>
 
         <ion-card>
           <ion-card-content>
-          <ion-card-title>Gruppenmitglieder</ion-card-title>
+          <ion-card-title>{{$t('ccr_group_members')}}</ion-card-title>
           <br>
           <ion-list>
             <ion-item
@@ -118,7 +119,7 @@
 
         <ion-card>
           <ion-card-content>
-          <ion-card-title>Anfragen</ion-card-title>
+          <ion-card-title>{{$t('ccr_requests')}}</ion-card-title>
           <br>
           <ion-list>
             <ion-item
@@ -138,15 +139,15 @@
 
         <ion-card>
           <ion-card-content>
-            <ion-button class="button" color="danger" @click="presentAlert">Gruppe löschen</ion-button>
+            <ion-button class="button" color="danger" @click="presentAlert">{{ $t('ccr_delete_group') }}</ion-button>
           </ion-card-content>
         </ion-card>
         
 
         <ion-alert
           :is-open="showAlert"
-          header="Gruppe löschen"
-          message="Möchtest du wirklich die Gruppe löschen? Diese Aktion kann nicht rückgängig gemacht werden."
+          header="Delete group"
+          message="Do you really want to delete the group? This action cannot be undone."
           :buttons="alertButtons"
           @didDismiss="showAlert = false"
         />
@@ -160,33 +161,32 @@
         <ion-content class="ion-padding">
           <ion-card>
             <ion-card-content>
-              <ion-card-title>Nutzungsbedingungen</ion-card-title>
-              Bitte akzeptiere unsere Nutzungsbedingungen, um dich zu registrieren. 
-              (Hier kannst du deinen eigenen Text einsetzen - z. B. Datenschutz, Fahrregeln usw.)
+              <ion-card-title>{{ $t('ccr_agree_terms') }}</ion-card-title>
+                {{ $t('ccr_agree_terms_text') }}  
             </ion-card-content>
           </ion-card>
 
           <ion-card>
-            <ion-card-title>Fahrzeugdaten</ion-card-title>
+            <ion-card-title>{{ $t('ccr_vehicle_data') }}</ion-card-title>
             <ion-input v-model="seats" type="number" placeholder="Sitzplätze ohne Fahrer"></ion-input>
             <ion-select v-model="selectFuelId" placeholder="Bitte Antrieb auswählen">
-              <ion-select-option value="1">Diesel</ion-select-option>
-              <ion-select-option value="2">Benzin</ion-select-option>
-              <ion-select-option value="3">Elektrisch</ion-select-option>
-              <ion-select-option value="4">Gas</ion-select-option>
-              <ion-select-option value="5">Hybrid</ion-select-option>
-              <ion-select-option value="6">Plug-in-Hybrid</ion-select-option>
+              <ion-select-option value="1">{{ $t('ccr_diesel') }}</ion-select-option>
+              <ion-select-option value="2">{{ $t('ccr_gasoline') }}</ion-select-option>
+              <ion-select-option value="3">{{ $t('ccr_electric') }}</ion-select-option>
+              <ion-select-option value="4">{{ $t('ccr_gas') }}</ion-select-option>
+              <ion-select-option value="5">{{ $t('ccr_hybrid') }}</ion-select-option>
+              <ion-select-option value="6">{{ $t('ccr_plug_in_hybrid') }}</ion-select-option>
             </ion-select>
           </ion-card>
 
           <ion-card>
-            <ion-card-title>Routendaten</ion-card-title>
+            <ion-card-title>{{ $t('ccr_route_data') }}</ion-card-title>
             <ion-input v-model="location" placeholder="Zielort"></ion-input>
             <ion-input v-model="postalCode" type="number" placeholder="PLZ"></ion-input>
           </ion-card>
 
-          <ion-button expand="block" color="success" @click="zustimmen">Zustimmen & Speichern</ion-button>
-          <ion-button expand="block" color="medium" @click="ablehnen">Ablehnen</ion-button>
+          <ion-button expand="block" color="success" @click="zustimmen">{{ $t('ccr_agree_save') }}</ion-button>
+          <ion-button expand="block" color="medium" @click="ablehnen">{{ $t('cancel') }}</ion-button>
         </ion-content>
       </ion-modal>
 
@@ -196,16 +196,16 @@
         :header="`Anfrage von ${selectedRequest?.firstname || ''} ${selectedRequest?.lastname || ''}`"
         :buttons="[
           {
-            text: 'Annehmen',
+            text: 'Accept',
             handler: () => handleRequest('accept')
           },
           {
-            text: 'Ablehnen',
+            text: 'Reject',
             role: 'destructive',
             handler: () => handleRequest('decline')
           },
           {
-            text: 'Abbrechen',
+            text: 'Cancel',
             role: 'cancel'
           }
         ]"
@@ -236,7 +236,6 @@ import {
   IonContent,
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonButtons,
   IonBackButton,
   IonSpinner,

@@ -3,8 +3,9 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
-                 <ion-buttons slot="start">
+<div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>                 <ion-buttons slot="start">
                     <ion-back-button router-link="setting-page"></ion-back-button>
                  </ion-buttons>
             </ion-toolbar>
@@ -21,37 +22,40 @@
                     <ion-toggle alignment="center" :checked="widgets.includes('Classes')"  @click="toggleWidget('Classes')">Stundenplan</ion-toggle>
                     <ion-toggle alignment="center" :checked="widgets.includes('PT')"  @click="toggleWidget('PT')">Fahrzeiten</ion-toggle>
                     <ion-toggle alignment="center" :checked="widgets.includes('Homework')"  @click="toggleWidget('Homework')">Hausaufgaben</ion-toggle>
-                
+                    <ion-toggle alignment="center" :checked="widgets.includes('Grade')"  @click="toggleWidget('Grade')">Notenübersicht</ion-toggle>
+
             </ion-card>
 
-            <ion-button @click="refreshWidgets">Speichern</ion-button>
+            <ion-card>
+                <ion-label>Dark Mode</ion-label>
+                <ion-toggle :checked="isDark" @ionChange="toggleTheme"></ion-toggle>
+            </ion-card>
 
-            <ion-toast 
-                :is-open="toastOpen" 
-                :color="toastColor"
-                :message="toastMessage" 
-                duration="2000" 
-                @didDismiss="toastOpen = false"/>
+
         </ion-content>
     </ion-page>
 </template>
 
 <script setup>
-import { IonToast ,IonButton ,IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonTitle, IonBackButton, IonButtons} from '@ionic/vue';
+import { IonLabel ,IonPage, IonContent, IonCard, IonHeader, IonToolbar, IonToggle, IonBackButton, IonButtons} from '@ionic/vue';
 
     import {ref, onMounted} from 'vue';
-    import  configTest  from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/config/config.json';
-    import { useRouter } from 'vue-router';
-    const toastMessage = ref('Speichern Erfolgreich!');
-    const toastOpen = ref(false);
-    const toastColor = ref('success');
-    const router = useRouter();
+    import  configTest  from '../config/config.json';
     let widgets = ref([]);
-
+    const isDark = ref(false);
     onMounted(() => {
         widgets.value = getWidgets();
         console.log(getWidgets());
-    });
+        const saved = localStorage.getItem('dark-mode');
+        isDark.value = saved === 'true';
+        document.body.classList.toggle('dark', isDark.value);
+        });
+
+        function toggleTheme(event) {
+        isDark.value = event.detail.checked;
+        document.body.classList.toggle('dark', isDark.value);
+        localStorage.setItem('dark-mode', isDark.value);
+        }
 
     const toggleWidget = (widget) => {
         let widgets = JSON.parse(localStorage.getItem('prefs_widgets')) || [];
@@ -74,13 +78,9 @@ import { IonToast ,IonButton ,IonPage, IonContent, IonCard, IonHeader, IonToolba
         return [];
     }
 
-    const refreshWidgets = () => {
-  widgets.value = getWidgets();
-  console.log(getWidgets());
-  router.replace('/tabs/settings');
-  setTimeout(() => {
-    toastOpen.value = true;
-  }, 500); // Kurze Verzögerung für bessere UX
-};
+
+
+
+    
 
 </script>

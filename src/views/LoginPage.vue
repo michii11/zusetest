@@ -3,8 +3,9 @@
         <!-- Kopfleiste -->
         <ion-header>
             <ion-toolbar>
-                 <ion-title>Konrad-Zuse-Schule</ion-title>
-            </ion-toolbar>
+                  <div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+                  </div>             </ion-toolbar>
         </ion-header>
 
         <!-- Body bereich -->
@@ -38,8 +39,8 @@
 
 <script setup>
 import { IonPage, IonContent, IonCard, IonCardContent, IonHeader, IonToolbar, IonCardHeader, 
-    IonCardTitle, IonTitle, IonInput, IonButton, IonItem } from '@ionic/vue';
-import { login } from 'C:/Users/micha/OneDrive/Desktop/Schule/zusetest/zusetest/src/views/settings/auth.js'; // Importiere die login Funktion
+    IonCardTitle, IonInput, IonButton, IonItem } from '@ionic/vue';
+import { login } from 'C:/Users/micha/OneDrive/Desktop/Schule/Konrad-Zuse-Schule_App/zusetest/src/views/settings/auth.js'; // Importiere die login Funktion
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 

@@ -3,8 +3,11 @@
     <!-- Kopfleiste -->
     <ion-header>
       <ion-toolbar>
-            <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" width="128px" style="padding: 5px;">
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>
       </ion-toolbar>
+
     </ion-header>
 
     <ion-content>
@@ -22,10 +25,10 @@
       <!-- Nach dem Laden -->
       <div v-else>
         <ion-card v-if="showRegistrationCard">
-          <ion-card-title>Nutzungsbedingungen zustimmen</ion-card-title>
+          <ion-card-title>{{ $t('ccr_agree_terms') }}</ion-card-title>
           <ion-card-content>
-            Stimme den Richtlinien zu und ergänze deine restlichen Daten.
-            Andere Schüler werden diese dann am Ende sehen.
+            {{ $t('ccr_agree_terms_text') }}
+            
             <ion-button expand="block" color="success" @click="zustimmen">Zustimmen & Speichern</ion-button>
           </ion-card-content>
         </ion-card>
@@ -39,12 +42,12 @@
 
             <ion-item v-if="isDriver && isInGroup || !isInGroup" :button="true" router-link="/carpooling-car-page">
               <ion-icon :icon="carOutline" class="icon-spacing"/>
-              <ion-label>Fahrten & Auto Managment</ion-label>
+              <ion-label>{{ $t('ccr_managment') }}</ion-label>
             </ion-item>
 
             <ion-item v-if="!isInGroup" :button="true" router-link="/carpooling-search-page">
               <ion-icon :icon="search" class="icon-spacing"/>
-              <ion-label>Suche</ion-label>
+              <ion-label>{{ $t('ccr_searching') }}</ion-label>
             </ion-item>
 
             <!--<ion-item :button="true" router-link="/carpooling-support-report">
@@ -63,7 +66,7 @@
 
           <ion-card v-if="groupMembers.length">
             <ion-card-header>
-              <ion-card-title>Deine Gruppe</ion-card-title>
+              <ion-card-title>{{ $t('ccr_your_group') }}</ion-card-title>
               <ion-card-subtitle>{{ groupInfo.location }} – {{ groupInfo.postcode }}</ion-card-subtitle>
             </ion-card-header>
 
@@ -78,16 +81,16 @@
               </ion-list>
 
               <ion-text class="block my-2">
-                <strong>Belegung:</strong> {{ groupInfo.members }} / {{ groupInfo.capacity }}
+                <strong>{{ $t('ccr_occupancy') }}:</strong> {{ groupInfo.members }} / {{ groupInfo.capacity }}
               </ion-text>
 
               <ion-text>
-                <p><strong>Antrieb:</strong> {{ fuelName(groupInfo.f_id) }}</p>
-                <p><strong>Sitzplätze:</strong> {{ groupInfo.seats + 1}}</p>
+                <p><strong>{{$t('ccr_fuel')}}:</strong> {{ fuelName(groupInfo.f_id) }}</p>
+                <p><strong>{{$t('ccr_seats')}}:</strong> {{ groupInfo.seats + 1}}</p>
               </ion-text>
 
               <ion-button expand="block" color="primary" router-link="/carpooling-chat">
-                Zum Gruppen-Chat
+                {{ $t('ccr_to_the_group_chat') }}
               </ion-button>
 
               <ion-button
@@ -96,14 +99,14 @@
                 @click="leaveCarpool"
                 v-if="!isGroupOwner"
               >
-                Gruppe verlassen
+                {{ $t('ccr_leave_group') }}
               </ion-button>
             </ion-card-content>
           </ion-card>
 
           <ion-card v-else>
             <ion-card-content>
-              <ion-card-title>Du bist in keiner Gruppe</ion-card-title>
+              <ion-card-title>{{ $t('ccr_no_group') }}</ion-card-title>
             </ion-card-content>
           </ion-card>
         </div>

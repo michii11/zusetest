@@ -49,3 +49,9 @@ router.isReady().then(() => {
   app.use(i18n);
   app.mount('#app');
 });
+
+
+const saved = localStorage.getItem('dark-mode');
+if (saved === 'true') {
+  document.body.classList.add('dark');
+}

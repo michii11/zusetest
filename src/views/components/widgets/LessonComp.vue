@@ -3,16 +3,17 @@
         <ion-col>
             <ion-card>
                 <ion-card-header>
-                    <ion-card-title>Nachrichten</ion-card-title>
+                    <ion-card-title>{{ $t("widgets_classes_title") }}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                    Keine Neuen Nachrichten.
+                    {{ $t("widgets_classes_nextClass") }}
                 </ion-card-content>
             </ion-card>
         </ion-col>
     </ion-row>
-</template>
+  </template>
 
-<script setup>
+  <script setup>
 import { IonRow, IonCol, IonCardContent, IonCard, IonCardHeader, IonCardTitle} from '@ionic/vue';
+
 </script>

@@ -3,7 +3,9 @@
     <!-- Kopfleiste -->
     <ion-header>
       <ion-toolbar>
-        <ion-title>Konrad-Zuse-Schule</ion-title>
+<div slot="secondary" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+          <img src="/images/KZS-LOGO_Graue_Schrift.svg" alt="Konrad-Zuse-Schule" style="padding: 5px; width: 128px;">
+        </div>
         <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -33,11 +35,11 @@
       <ion-modal :is-open="showModal" @didDismiss="closeRequestModal">
         <ion-content class="ion-padding">
           <ion-card>
-            <ion-card-title>Mitfahranfrage senden</ion-card-title>
+            <ion-card-title>{{$t('ccr_send_request')}}</ion-card-title>
             <ion-card-content>
               <ion-textarea
                 v-model="message"
-                placeholder="Nachricht an den Gastgeber"
+                placeholder="Send a message"
                 auto-grow
               ></ion-textarea>
             </ion-card-content>
@@ -66,7 +68,6 @@ import {
   IonContent,
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonButtons,
   IonBackButton,
 } from '@ionic/vue';
